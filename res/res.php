@@ -1,4 +1,6 @@
-<?php function startit($title)
+<?php 
+$HOMEDIR="https://wlankabel.at/john/blog";
+function startit($title)
 {
 	echo "<!DOCTYPE html>";
 	echo "<html>";
@@ -14,13 +16,17 @@
 	echo "	<header>";
 	echo "<h1>$title</h1>"; 
 	echo "	</header>";
+	echo "<navigation>";
+	echo "<table><tr><td><a href=\"https://wlankabel.at\" >WLANKABEL</a></td>"; 
+	echo "<td><a href=\"$HOMEDIR\">BLOG-HOME</a></td></tr></table>"; 
+	echo "</navigation>";
 }
 
 function doit($dir)
 {
 	
 	echo "<article>";
-	$body = shell_exec("/usr/bin/markdown $dir/index.md ") ; 
+	$body = shell_exec("/usr/bin/tail -n+3 $dir/index.md | /usr/bin/markdown ") ; 
 	echo $body;
 	echo "</article>";
 }
