@@ -12,6 +12,12 @@ body{
 	background-color: #b6bEB9;
 	background-color: #B49974;
 	font-size: x-large;
+	text-align: center;
+}
+
+header{
+	text-align: justify;
+	margin: auto;
 }
 
 h1{
