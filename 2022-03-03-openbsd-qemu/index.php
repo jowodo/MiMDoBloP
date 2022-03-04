@@ -1,9 +1,9 @@
 <?php
 include '../res/res.php'; 
 $title="OpenBSD in QEMU"; 
-start($title); 
+startit($title); 
 ###############
-body(getcwd());
+doit(getcwd());
 ###############
-endt();
+endit();
 ?>

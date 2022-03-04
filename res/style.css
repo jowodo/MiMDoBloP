@@ -57,9 +57,11 @@ article{
 code{
 	color: #f0f0f0;
 	background-color: #0f0f0f;
+//	overflow: scroll;
+	overflow: auto;
 }
 
-:link {color: #ffbb00; text-decoration: underline; }
+a:link {color: #0000ff; text-decoration: underline; }
 a:active {color: #0000ff; text-decoration: underline; }
-a:visited {color: #008000; text-decoration: underline; }
+a:visited {color: #880088; text-decoration: underline; }
 a:hover {color: #ff0000; text-decoration: none; }

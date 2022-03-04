@@ -1,4 +1,4 @@
-<?php function start($title)
+<?php function startit($title)
 {
 	echo "<!DOCTYPE html>";
 	echo "<html>";
@@ -7,6 +7,7 @@
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
 	echo "	<link href=\"../res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
+	echo "	<link href=\"./res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
 	echo "	<title>JohnsBlog - $title</title>";
 	echo "</head>";
 	echo "<body>";
@@ -15,13 +16,7 @@
 	echo "	</header>";
 }
 
-function endt()
-{
-	echo "</body>";
-	echo "</html>";
-}
-
-function body($dir)
+function doit($dir)
 {
 	
 	echo "<article>";
@@ -29,4 +24,11 @@ function body($dir)
 	echo $body;
 	echo "</article>";
 }
+
+function endit()
+{
+	echo "</body>";
+	echo "</html>";
+}
+
 ?>

@@ -22,6 +22,9 @@ I downloaded the image from [openbsd.org](https://www.openbsd.org/faq/faq4.html#
 
 `wget https://cdn.openbsd.org/pub/OpenBSD/7.0/amd64/install70.iso` 
 
-Now we can already boot into the bootable.
+Now we can already boot into the installation live disk.
 
-`qemu-system-x86_64 -drive file=/home/pur/Doc/Computer/Distros/obsdbox.img,format=qcow2 -enable-kvm -m 4G -vga vmware -cdrom /home/pur/Doc/Computer/Distros/openbsd_install70.iso -boot once=d`
+`qemu-system-x86_64 -drive file=/home/pur/Doc/Computer/Distros/obsdbox.img,format=qcow2 -enable-kvm -m 4G -cdrom /home/pur/Doc/Computer/Distros/openbsd_install70.iso -boot once=d`
+
+The installation process is rather straight forward. 
+You will be prompted with some questions and the answers will determine your installation.
