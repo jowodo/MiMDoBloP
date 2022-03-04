@@ -5,9 +5,9 @@ startit($title);
 ###############
 #
 echo "<article>";
-echo "
-List of articles
-";
+echo "<h1>About this blog</h1>"; 
+echo "In this blog technical issues about Linux, Unix, bash and so on will be treated."; 
+echo "<h2>List of articles</h2>";
 echo "<ul>";
 #$files=scandir('.');
 $files=scandir(getcwd());
