@@ -1,6 +1,7 @@
 <?php 
 $HOMEURL="https://wlankabel.at/john/blog/";
 $HOMEPATH="/var/www/html/john/blog";
+
 function startit($title)
 {
 	GLOBAL $HOMEURL;
@@ -23,18 +24,26 @@ function startit($title)
 function navi()
 {
 	GLOBAL $HOMEURL;
-	$CURRENT=""; 
-	$PREV="";
-	$NEXT="";
+	$PAGES=get_pages();
+	$THISDIR=shell_exec("basename `pwd` "); 
+	# cut last character ("\n")
+	$THISDIR=substr($THISDIR,0,-1);
+	$CURRENTPAGENUMBER=array_search($THISDIR,$PAGES);
 	echo "<navigation>";
 	echo "<table><tr>";
-	echo "<td><a href=$PREV> &lt; prev </a></td>"; 
+	if ($CURRENTPAGENUMBER != 0 ) {
+		$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
+		$PREV=$HOMEURL.$PRVPG;
+		echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
+	}
 	echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
-	echo "<td><a href=$NEXT > next &gt; </a></td>"; 
+	if ($CURRENTPAGENUMBER != count($PAGES)-1){
+		$NXTPG=$PAGES[$CURRENTPAGENUMBER+1];
+		$NEXT=$HOMEURL.$NXTPG;
+		echo "<td><a href=$NEXT > next &gt; </a></td>"; 
+	}
 	echo "</tr></table>"; 
 	echo "</navigation>";
-	echo "$PAGES";
-	$PAGES=get_pages();
 }
 
 function get_pages()
