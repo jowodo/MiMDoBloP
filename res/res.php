@@ -1,13 +1,14 @@
 <?php 
-$HOMEDIR="https://wlankabel.at/john/blog/";
+$HOMEURL="https://wlankabel.at/john/blog/";
+$HOMEPATH="/var/www/html/john/blog";
 function startit($title)
 {
-	GLOBAL $HOMEDIR;
+	GLOBAL $HOMEURL;
 	echo "<!DOCTYPE html>";
 	echo "<html>";
 	echo "<head>";
 #	echo "	<base href=\".\" >";
-	echo "	<base href=\"$HOMEDIR\" >";
+	echo "	<base href=\"$HOMEURL\" >";
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
 	echo "	<link href=\"./res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
@@ -17,13 +18,76 @@ function startit($title)
 	echo "	<header>";
 	echo "<h1>$title</h1>"; 
 	echo "	</header>";
+	navi();
+
+}
+function navi()
+{
+	GLOBAL $HOMEURL;
+	$CURRENT=""; 
+	$PREV="";
+	$NEXT="";
 	echo "<navigation>";
-	echo "<table><tr><td><a href=\"https://wlankabel.at\" >wlankabel</a></td>"; 
-	echo "<td><a href=\"$HOMEDIR\">blog-home</a></td></tr></table>"; 
+	echo "<table><tr>";
+	echo "<td><a href=$PREV> &lt; prev </a></td>"; 
+	echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
+	echo "<td><a href=$NEXT > next &gt; </a></td>"; 
+	echo "</tr></table>"; 
 	echo "</navigation>";
+	echo "$PAGES";
+	$PAGES=get_pages();
 }
 
+function get_pages()
+{
+	GLOBAL $HOMEPATH;
+	$PAGES=scandir($HOMEPATH);
+	$excludes=['index.php', 'res', '.git', '.htaccess', '.', '..'];
+	$Npages=count($PAGES);
+	/*
+	for ($i=0; $i < $Npages; $i++) 
+	{
+		for ($j=0; $j < count($exclude); $j++)
+		{
+			if ( $PAGES[$i] == $exclude[$j] ) 
+			{
+				unset($PAGES[$i]);
+			}
+		}
+	}
+	 */
+	/*
+	foreach ($PAGES as $page)
+	{
+		foreach ($exclude as $x)
+		{
+			if ( $page == $x ) 
+			{
+				unset( $PAGES[array_search($page,$PAGES)] );
+			}
+		}
+	}
+	 */
+	foreach ($excludes as $exclude)
+	{
+		unset( $PAGES[array_search($exclude,$PAGES)] );
+	}
+	$PAGES=array_values($PAGES);
+//	print_r($PAGES); echo "<br>";
+	return $PAGES;
+}
+
+
 function doit()
+{
+	created();
+	echo "<article>";
+	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | /usr/bin/markdown ") ; 
+	echo $body;
+	echo "</article>";
+}
+
+function created()
 {
 	$AUTHOR=shell_exec("ls -l ./index.md | awk '{print $3}'"); 
 	$DIRNAME=shell_exec("basename `pwd`"); 
@@ -37,10 +101,6 @@ function doit()
 		$YEAR=date('Y');
 	}
 	echo "created by $AUTHOR on $DATE - last changed on $YEAR $MONTH_LASTCHANGE";
-	echo "<article>";
-	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | /usr/bin/markdown ") ; 
-	echo $body;
-	echo "</article>";
 }
 
 function endit()
