@@ -1,12 +1,44 @@
-The creation of this blog
+The Creation Of This Blog
 =========================
 
 The Idea
 --------
-I wanted to create a blog for some time now 
+I wanted to create a blog for some time now, but never got to it.
+Finally, here it is. 
+Actually this blog post was created after beginning of the [OpenBSD in QEMU](../2022-03-04-openbsd-qemu) post because in the beginning I just wanted to write a blog post about what I had accomplished. However little it was, I was happy that I finally had overcome the issue 
 Using Markdown
 --------------
+I started writing HTML code and noticed how cumbersome it was. 
+At work I use a lot of markdown language and remembered that I once saw a [video](https://yewtu.be/watch?v=N_ttw2Dihn8) about a markdown blog. 
+So I duckduckwent "markdown server" or what ever - I can't remember. 
+If you ever look for a markdown solution for your website, I advise you to search for "php markdown" instead ((parsedown)[https://parsedown.org/demo] looks pretty neat). 
+I found [this github repo](https://github.com/nd1012/MarkDown-Server), but got stuck, so I filed an issue and got a quick response, but in the meantime I have already started implementing my own inspired by the heart of above mentioned repository: the `markdown` command, which is the only dependency except for PHP and coreutils. 
+So I started scripting as I already had some PHP experience. 
+At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now growing more and more usable. 
+At the moment the whole blog is still on github, which might change if this grows into a project others want to use, what I don't believe since there are many smooth, clean and matured php markdown servers. 
 How TO USE IT
 -------------
-TOOD
+If you are in the base directory, in order to create a post make a directory
+and create a link to the ./res/index.php file from within your new directory:
+<pre>mkdir year-month-day-title
+cd year-month-day-title
+ln -s ../res/index.php .
+</pre>
+or you just run the `mkpost.sh` command: 
+<pre>./res/mkpost.s</pre>
+which will set up a new blog post for you. 
+All you will have to do is change into the newly created directory and edit the index.md file. 
+
+Test Area
+---------
+    indented code test
+![test pic](../../../images/space.jpg)
+
+TODOs
 ----
+- manage .htaccess such that folders without index.php won't be shown 
+- code scrollable 
+- prev home next navigation
+- date (if dec last year it will show, dec this year even though not yet dec)
+- date ( either 2022 Mar 03 or 2022-03-03 ) 
+- list dirs function into res.php with excluded array 

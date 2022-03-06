@@ -77,6 +77,24 @@ padding: 3px;
 border-radius: 3px;
 }
 
+pre{ 
+color: #f0f0f0;
+color: #E6E4DF;
+background-color: #0f0f0f;
+overflow-x: auto; 
+padding: 5px;
+padding-bottom: 15px;
+border-radius: 3px;
+} 
+
+img{ 
+	display: block; 
+	max-width: 85%; 
+	margin: auto;
+	border-radius: 5px;
+//	filter: grayscale(100%);
+}
+
 a:link {color: #0000ff; text-decoration: underline; }
 a:active {color: #0000ff; text-decoration: underline; }
 a:visited {color: #880088; text-decoration: underline; }

@@ -28,9 +28,10 @@ I downloaded the image from [openbsd.org](https://www.openbsd.org/faq/faq4.html#
 
 Now we can already boot into the installation live disk:
 
-`
+<pre>
 qemu-system-x86_64 -drive file=/home/pur/Doc/Computer/Distros/obsdbox.img,format=qcow2 -enable-kvm -m 4G -cdrom /home/pur/Doc/Computer/Distros/openbsd_install70.iso -boot once=d
-`
+</pre>
+
 
 The installation process is rather straight forward. 
 You will be prompted with some questions and the answers will determine your installation.
