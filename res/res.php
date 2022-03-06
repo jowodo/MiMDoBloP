@@ -24,6 +24,7 @@ function startit($title)
 function navi()
 {
 	GLOBAL $HOMEURL;
+	GLOBAL $HOMEPATH;
 	$PAGES=get_pages();
 	$THISDIR=shell_exec("basename `pwd` "); 
 	# cut last character ("\n")
@@ -31,15 +32,25 @@ function navi()
 	$CURRENTPAGENUMBER=array_search($THISDIR,$PAGES);
 	echo "<navigation>";
 	echo "<table><tr>";
+	// if  not first article show prev button
 	if ($CURRENTPAGENUMBER != 0 ) {
 		$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
 		$PREV=$HOMEURL.$PRVPG;
 		echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
 	}
 	echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
+	// if not last article, show next button
 	if ($CURRENTPAGENUMBER != count($PAGES)-1){
 		$NXTPG=$PAGES[$CURRENTPAGENUMBER+1];
 		$NEXT=$HOMEURL.$NXTPG;
+		$HOMEPATHDIR=shell_exec("basename $HOMEPATH");
+		# cut last character ("\n")
+		$HOMEPATHDIR=substr($HOMEPATHDIR,0,-1);
+		// next buttom show to first article 
+			if ( $THISDIR == $HOMEPATHDIR ) {
+				$NXTPG=$PAGES[0];
+				$NEXT=$HOMEURL.$NXTPG;
+			} 
 		echo "<td><a href=$NEXT > next &gt; </a></td>"; 
 	}
 	echo "</tr></table>"; 

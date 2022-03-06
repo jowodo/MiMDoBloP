@@ -46,6 +46,13 @@ table{
 //	padding: 5px;
 	padding-bottom: 15px;
 }
+th,td{
+	border: 1px solid white;
+	border-radius: 10px;
+	padding: 5px;
+	color: #101010;
+	background-color: #E6E4DF;
+}
 
 article{
 	color: #101010;
@@ -64,7 +71,8 @@ article{
 
 code{
 color: #f0f0f0;
-background-color: #0f0f0f;
+//background-color: #0f0f0f;
+background-color: #B49974;
 //overflow: scroll;
 //overflow: auto;
 //text-align: start;
@@ -83,6 +91,7 @@ color: #E6E4DF;
 background-color: #0f0f0f;
 overflow-x: auto; 
 padding: 5px;
+padding-top: 15px;
 padding-bottom: 15px;
 border-radius: 3px;
 } 
