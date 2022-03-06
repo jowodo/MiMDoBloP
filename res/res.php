@@ -7,7 +7,6 @@ function startit($title)
 	echo "<!DOCTYPE html>";
 	echo "<html>";
 	echo "<head>";
-#	echo "	<base href=\".\" >";
 	echo "	<base href=\"$HOMEURL\" >";
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
@@ -44,30 +43,6 @@ function get_pages()
 	$PAGES=scandir($HOMEPATH);
 	$excludes=['index.php', 'res', '.git', '.htaccess', '.', '..'];
 	$Npages=count($PAGES);
-	/*
-	for ($i=0; $i < $Npages; $i++) 
-	{
-		for ($j=0; $j < count($exclude); $j++)
-		{
-			if ( $PAGES[$i] == $exclude[$j] ) 
-			{
-				unset($PAGES[$i]);
-			}
-		}
-	}
-	 */
-	/*
-	foreach ($PAGES as $page)
-	{
-		foreach ($exclude as $x)
-		{
-			if ( $page == $x ) 
-			{
-				unset( $PAGES[array_search($page,$PAGES)] );
-			}
-		}
-	}
-	 */
 	foreach ($excludes as $exclude)
 	{
 		unset( $PAGES[array_search($exclude,$PAGES)] );
