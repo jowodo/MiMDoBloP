@@ -47,7 +47,7 @@ table{
 	padding-bottom: 15px;
 }
 th,td{
-	border: 1px solid white;
+	border: 2px solid #935A5A;
 	border-radius: 10px;
 	padding: 5px;
 	color: #101010;
@@ -70,7 +70,7 @@ article{
 }
 
 code{
-color: #f0f0f0;
+color: #000000;
 //background-color: #0f0f0f;
 background-color: #B49974;
 //overflow: scroll;

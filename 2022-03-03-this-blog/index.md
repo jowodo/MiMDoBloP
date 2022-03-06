@@ -5,13 +5,13 @@ The Idea
 --------
 I wanted to create a blog for some time now, but never got to it.
 Finally, here it is. 
-Actually this blog post was created after beginning of the [OpenBSD in QEMU](../2022-03-04-openbsd-qemu) post because in the beginning I just wanted to write a blog post about what I had accomplished. However little it was, I was happy that I finally had overcome the issue 
+Actually this blog post was created after beginning of the [OpenBSD in QEMU](./2022-03-04-openbsd-qemu) post because in the beginning I just wanted to write a blog post about what I had accomplished. However little it was, I was happy that I finally had overcome the issue 
 Using Markdown
 --------------
 I started writing HTML code and noticed how cumbersome it was. 
 At work I use a lot of markdown language and remembered that I once saw a [video](https://yewtu.be/watch?v=N_ttw2Dihn8) about a markdown blog. 
 So I duckduckwent "markdown server" or what ever - I can't remember. 
-If you ever look for a markdown solution for your website, I advise you to search for "php markdown" instead ((parsedown)[https://parsedown.org/demo] looks pretty neat). 
+If you ever look for a markdown solution for your website, I advise you to search for "php markdown" instead ([parsedown](https://parsedown.org/demo) looks pretty neat). 
 I found [this github repo](https://github.com/nd1012/MarkDown-Server), but got stuck, so I filed an issue and got a quick response, but in the meantime I have already started implementing my own inspired by the heart of above mentioned repository: the `markdown` command, which is the only dependency except for PHP and coreutils. 
 So I started scripting as I already had some PHP experience. 
 At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now growing more and more usable. 
