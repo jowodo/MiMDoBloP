@@ -17,6 +17,7 @@ for ($i=2; $i < count($files); $i++) {
 	if ($files[$i] == "index.php" 
 		or $files[$i] == "res" 
 		or $files[$i] == ".git" 
+		or $files[$i] == ".htaccess" 
 		or $files[$i]=="tempdir") {
 		continue; 
 	}

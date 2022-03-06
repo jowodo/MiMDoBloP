@@ -1,1 +1,1 @@
-../tempdir/index.php
+../res/index.php

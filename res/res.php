@@ -1,15 +1,15 @@
 <?php 
-$HOMEDIR="https://wlankabel.at/john/blog";
+$HOMEDIR="https://wlankabel.at/john/blog/";
 function startit($title)
 {
 	GLOBAL $HOMEDIR;
 	echo "<!DOCTYPE html>";
 	echo "<html>";
 	echo "<head>";
-	echo "	<base href=\".\" >";
+#	echo "	<base href=\".\" >";
+	echo "	<base href=\"$HOMEDIR\" >";
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
-	echo "	<link href=\"../res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
 	echo "	<link href=\"./res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
 	echo "	<title>JohnsBlog - $title</title>";
 	echo "</head>";
@@ -18,12 +18,12 @@ function startit($title)
 	echo "<h1>$title</h1>"; 
 	echo "	</header>";
 	echo "<navigation>";
-	echo "<table><tr><td><a href=\"https://wlankabel.at\" >WLANKABEL</a></td>"; 
-	echo "<td><a href=\"$HOMEDIR\">BLOG-HOME</a></td></tr></table>"; 
+	echo "<table><tr><td><a href=\"https://wlankabel.at\" >wlankabel</a></td>"; 
+	echo "<td><a href=\"$HOMEDIR\">blog-home</a></td></tr></table>"; 
 	echo "</navigation>";
 }
 
-function doit($dir)
+function doit()
 {
 	$AUTHOR=shell_exec("ls -l ./index.md | awk '{print $3}'"); 
 	$DIRNAME=shell_exec("basename `pwd`"); 
@@ -38,7 +38,7 @@ function doit($dir)
 	}
 	echo "created by $AUTHOR on $DATE - last changed on $YEAR $MONTH_LASTCHANGE";
 	echo "<article>";
-	$body = shell_exec("/usr/bin/tail -n+3 $dir/index.md | /usr/bin/markdown ") ; 
+	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | /usr/bin/markdown ") ; 
 	echo $body;
 	echo "</article>";
 }

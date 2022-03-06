@@ -11,7 +11,8 @@ body{
 	background-color: #E6DEB9;
 	background-color: #b6bEB9;
 	background-color: #B49974;
-	font-size: x-large;
+//	font-size: x-large;
+//	font-size: large;
 	text-align: center;
 }
 
@@ -41,7 +42,7 @@ table{
 	border-collapse: separate;
 	table-layout: auto;
 	border-spacing: 15px 1px;
-	font-size: x-large;
+//	font-size: x-large;
 //	padding: 5px;
 	padding-bottom: 15px;
 }
@@ -50,8 +51,8 @@ article{
 	color: #101010;
 	background-color: #ffffff;
 	background-color: #E6E4DF;
-	font-size: x-large;
-	font-size: large;
+//	font-size: x-large;
+//	font-size: large;
 	width: 75%;
 //	overflow: hidden;
 	text-align: justify;
