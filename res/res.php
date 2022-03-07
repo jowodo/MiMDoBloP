@@ -1,5 +1,5 @@
 <?php 
-include "/var/www/html/blog/res/config.php";
+include substr(strval(__FILE__),0,-7)."config.php";
 
 function startit($title)
 {
