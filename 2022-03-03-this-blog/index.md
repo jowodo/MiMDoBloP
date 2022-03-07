@@ -1,4 +1,4 @@
-The Creation Of This Blog
+The Creation Of MDBlog
 =========================
 
 The Idea
@@ -15,7 +15,7 @@ I found [this github repo](https://github.com/swharden/md2html-php) and failed m
 [this github repo](https://github.com/nd1012/MarkDown-Server), but got stuck, so I filed an issue and got a quick response, but in the meantime I have already started implementing my own inspired by the heart of the later above mentioned repository: the `markdown` command, which is the only dependency except for PHP and coreutils. 
 If you ever look for another markdown solution for your website, I advise you to search for "php markdown" instead ([parsedown](https://parsedown.org/demo) looks pretty neat). 
 So I started scripting as I already had some PHP experience. 
-At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now md-blog is growing more and more usable. 
+At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now **MDBlog** is growing more and more usable. 
 At the moment the whole blog is still on github, which might change if this grows into a project others want to use, what I don't believe since there are many smooth, clean and matured php markdown servers. 
 How To Use It
 -------------
