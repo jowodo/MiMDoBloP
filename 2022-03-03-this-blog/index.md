@@ -11,12 +11,13 @@ Using Markdown
 I started writing HTML code and noticed how cumbersome it was. 
 At work I use a lot of markdown language and remembered that I once saw a [video](https://yewtu.be/watch?v=N_ttw2Dihn8) about a markdown blog. 
 So I duckduckwent "markdown server" or what ever - I can't remember. 
-If you ever look for a markdown solution for your website, I advise you to search for "php markdown" instead ([parsedown](https://parsedown.org/demo) looks pretty neat). 
-I found [this github repo](https://github.com/nd1012/MarkDown-Server), but got stuck, so I filed an issue and got a quick response, but in the meantime I have already started implementing my own inspired by the heart of above mentioned repository: the `markdown` command, which is the only dependency except for PHP and coreutils. 
+I found [this github repo](https://github.com/swharden/md2html-php) and failed miserably and 
+[this github repo](https://github.com/nd1012/MarkDown-Server), but got stuck, so I filed an issue and got a quick response, but in the meantime I have already started implementing my own inspired by the heart of the later above mentioned repository: the `markdown` command, which is the only dependency except for PHP and coreutils. 
+If you ever look for another markdown solution for your website, I advise you to search for "php markdown" instead ([parsedown](https://parsedown.org/demo) looks pretty neat). 
 So I started scripting as I already had some PHP experience. 
-At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now growing more and more usable. 
+At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now md-blog is growing more and more usable. 
 At the moment the whole blog is still on github, which might change if this grows into a project others want to use, what I don't believe since there are many smooth, clean and matured php markdown servers. 
-How TO USE IT
+How To Use It
 -------------
 If you are in the base directory, in order to create a post make a directory
 and create a link to the ./res/index.php file from within your new directory:
@@ -25,7 +26,7 @@ cd year-month-day-title
 ln -s ../res/index.php .
 </pre>
 or you just run the `mkpost.sh` command: 
-<pre>./res/mkpost.s</pre>
+<pre>./res/mkpost.sh</pre>
 which will set up a new blog post for you. 
 All you will have to do is change into the newly created directory and edit the index.md file. 
 
@@ -34,11 +35,18 @@ Test Area
     indented code test
 ![test pic](../../../images/space.jpg)
 
+
+| this | is | a |
+| --- | --- | --- |
+| test | table | yes |
+
 TODOs
 ----
 - manage .htaccess such that folders without index.php won't be shown 
-- code scrollable 
-- prev home next navigation
+- code scrollable (chrome on macOS doesn't work (maybe within div?)
 - date (if dec last year it will show, dec this year even though not yet dec)
 - date ( either 2022 Mar 03 or 2022-03-03 ) 
-- list dirs function into res.php with excluded array 
+- name for overview page: rootpage? 
+- rootpage also markdown 
+- option to have subdirs 
+- config file with all variables
