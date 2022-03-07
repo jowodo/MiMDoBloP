@@ -3,6 +3,8 @@ OpenBSD in QEMU
 
 About OpenBSD
 -------------
+![OpenBSD 7.0](https://www.openbsd.org/images/puffy70.gif)
+
 OpenBSD is a fork of BSD (Berkley Software Distribution)  which is it self a fork from the original UNIX and I've heard a lot of positive things about it. 
 For some time I've played with the idea of installing it and some days ago it popped up in my mind and I decided to give it a try.
 So I watched some youtube videos and read some articles and dove into it.
