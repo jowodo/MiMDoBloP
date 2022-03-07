@@ -1,10 +1,10 @@
 <?php 
-$HOMEURL="https://wlankabel.at/john/blog/";
-$HOMEPATH="/var/www/html/john/blog";
+include "/var/www/html/blog/res/config.php";
 
 function startit($title)
 {
 	GLOBAL $HOMEURL;
+	GLOBAL $PAGENAME;
 	echo "<!DOCTYPE html>";
 	echo "<html>";
 	echo "<head>";
@@ -12,7 +12,7 @@ function startit($title)
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
 	echo "	<link href=\"./res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
-	echo "	<title>JohnsBlog - $title</title>";
+	echo "	<title>$PAGENAME - $title</title>";
 	echo "</head>";
 	echo "<body>";
 	echo "	<header>";
