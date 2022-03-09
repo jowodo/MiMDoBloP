@@ -60,10 +60,11 @@ function navi()
 function get_pages()
 {
 	GLOBAL $HOMEPATH;
+	GLOBAL $EXCLUDES;
 	$PAGES=scandir($HOMEPATH);
-	$excludes=['index.php', 'res', '.git', '.htaccess', '.', '..'];
+//	$EXCLUDES=['index.php', 'res', '.git', '.htaccess', '.', '..'];
 	$Npages=count($PAGES);
-	foreach ($excludes as $exclude)
+	foreach ($EXCLUDES as $exclude)
 	{
 		unset( $PAGES[array_search($exclude,$PAGES)] );
 	}

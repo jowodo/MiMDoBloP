@@ -1,13 +1,12 @@
 The Creation Of MDBlog
-=========================
+======================
 
-The Idea
---------
+## The Idea
 I wanted to create a blog for some time now, but never got to it.
 Finally, here it is. 
 Actually this blog post was created after beginning of the [OpenBSD in QEMU](./2022-03-04-openbsd-qemu) post because in the beginning I just wanted to write a blog post about what I had accomplished. However little it was, I was happy that I finally had overcome the issue 
-Using Markdown
---------------
+
+## Using Markdown
 I started writing HTML code and noticed how cumbersome it was. 
 At work I use a lot of markdown language and remembered that I once saw a [video](https://yewtu.be/watch?v=N_ttw2Dihn8) about a markdown blog. 
 So I duckduckwent "markdown server" or what ever - I can't remember. 
@@ -17,8 +16,15 @@ If you ever look for another markdown solution for your website, I advise you to
 So I started scripting as I already had some PHP experience. 
 At first it was just a quick fix, as I wanted to document my experience with installing OpenBSD, but now **MDBlog** is growing more and more usable. 
 At the moment the whole blog is still on github, which might change if this grows into a project others want to use, what I don't believe since there are many smooth, clean and matured php markdown servers. 
-How To Use It
--------------
+
+## How To Use It
+### First steps 
+In your `/var/www/html` folder clone the github repository into a directory blog. 
+Of course you can downloaded into any other directory. 
+<pre> git clone https://github.com/pur80a/MDBlog.git /var/www/html/blog</pre>
+Then, to get things running, you will have to edit the config file: `/var/www/html/blog/res/config.php`. 
+
+
 If you are in the base directory, in order to create a post make a directory
 and create a link to the ./res/index.php file from within your new directory:
 <pre>mkdir year-month-day-title
@@ -49,4 +55,5 @@ TODOs
 - name for overview page: rootpage? 
 - rootpage also markdown 
 - option to have subdirs 
-- config file with all variables
+- config file with excluded files
+- pre-publish 
