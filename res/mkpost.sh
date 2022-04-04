@@ -1,17 +1,24 @@
 #!/bin/bash 
 
+if [ $# -eq 0 ] ; then 
+	echo -e "\nUSAGE:\t$0 [blog-post-title]\n"
+	exit
+fi
+
 NAME=$1
 VERBOSE=0
+DATESTRING="%Y-%m"
 
 if [ ${VERBOSE} -gt 0 ] 
 then
 	VFLAG="-v"
 fi
 
-DIRNAME=$(date +"%Y-%m-%d")-${NAME}
-mkdir ${VFLAG} ${DIRNAME}
+[ $(basename `pwd`) == res ] && cd .. 
+DIRNAME=$(date +$DATESTRING)/${NAME}
+mkdir -p ${VFLAG} ${DIRNAME}
 cd ${DIRNAME}
-ln ${VFLAG} -s ../res/index.php . 
+ln ${VFLAG} -s ../../res/index.php . 
 echo $1 > index.md
 echo "=========" >> index.md 
 
