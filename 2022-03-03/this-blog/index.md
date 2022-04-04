@@ -1,6 +1,5 @@
 The Creation Of MDBlog
 ======================
-
 ## The Idea
 I wanted to create a blog for some time now, but never got to it.
 Finally, here it is. 
@@ -19,20 +18,22 @@ At the moment the whole blog is still on github, which might change if this grow
 
 ## How To Use It
 ### First steps 
-In your `/var/www/html` folder clone the github repository into a directory blog. 
+In your `/var/www/html` folder clone the github repository into a directory `blog`. 
 Of course you can downloaded into any other directory. 
-<pre> git clone https://github.com/pur80a/MDBlog.git /var/www/html/blog</pre>
+<pre>
+git clone https://github.com/pur80a/MDBlog.git /var/www/html/blog 
+</pre>
 Then, to get things running, you will have to edit the config file: `/var/www/html/blog/res/config.php`. 
-
 
 If you are in the base directory, in order to create a post make a directory
 and create a link to the ./res/index.php file from within your new directory:
-<pre>mkdir year-month-day-title
-cd year-month-day-title
+<pre>mkdir year-month-day/title
+cd year-month-day/title
 ln -s ../res/index.php .
 </pre>
-or you just run the `mkpost.sh` command: 
-<pre>./res/mkpost.sh</pre>
+or you just run the `mkpost.sh` script: 
+<pre>./res/mkpost.sh
+</pre>
 which will set up a new blog post for you. 
 All you will have to do is change into the newly created directory and edit the index.md file. 
 
