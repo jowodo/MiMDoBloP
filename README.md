@@ -26,7 +26,7 @@ Directory Structure
 -------------------
 The remaining folders should be named YYYY-MM-DD (and are name in this manner automatically by the `mkpost.sh` script). The date format can be changed as pleased in the `mkpost.sh` script (eg. YYYY-MM, see `man(1) date`). The folders can even be named arbitrarily, but chronological order is not guaranteed. This could be used to categorize blog posts. 
 
-The name of the parent directory will be used as a title for the web page. If the `index.php` file (link) is missing, the post will not be displayed in the overview. This can be used to hide post which aren't finished. 
+The name of the parent directory will be used as a title for the web page. If the `index.php` file (link) is missing, the post will not be displayed in the overview. This can be used to hide post which aren't finished. Alternatively, one can rename the `index.php` file and work on the post (this breaks the seamless navigation. 
 
 Markdown File Structure
 -----------------------

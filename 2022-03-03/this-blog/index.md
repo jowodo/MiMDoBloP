@@ -49,12 +49,7 @@ Test Area
 
 TODOs
 ----
-- manage .htaccess such that folders without index.php won't be shown 
 - code scrollable (chrome on macOS doesn't work (maybe within div?)
-- date (if dec last year it will show, dec this year even though not yet dec)
-- date ( either 2022 Mar 03 or 2022-03-03 ) 
-- name for overview page: rootpage? 
-- rootpage also markdown 
+- overview also markdown 
 - option to have subdirs 
-- config file with excluded files
 - pre-publish 
