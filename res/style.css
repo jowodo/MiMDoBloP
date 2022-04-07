@@ -4,13 +4,15 @@
 	--artclr:  #E6E4DF;
 	--hdgclr:  #935A5A;
 	--linkclr: #0000ff;
-	--linkvis: #888888;
+	--linkvis: #000088;
 	--linkhvr: #ff0000;
 }
 body{
 	color: var(--txtclr);
 	background-color: var(--bgclr);
 	text-align: center;
+	line-height: 1.4;
+	font-size: 18px;
 }
 
 header{
