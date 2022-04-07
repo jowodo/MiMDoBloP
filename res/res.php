@@ -24,6 +24,9 @@ function startit($title)
 }
 function navigation()
 {
+	/*
+	 * CREATE NAVIGATION BUTTONS
+	 */
 	GLOBAL $HOMEURL;
 	GLOBAL $HOMEPATH;
 	$PAGES=get_pages();
@@ -40,25 +43,27 @@ function navigation()
 	$CURRENTPAGENUMBER=get_position($PAGES,$THISDIR);
 	echo "<navigation>";
 	echo "<table><tr>";
+// PREV BUTTON
 // if  not first article show prev button
 	if ($CURRENTPAGENUMBER != 0 ) {
 		$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
 		$PREV=$HOMEURL.$PRVPG;
 		echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
 	}
+// HOME BUTTON
 	echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
-// if not last article, show next button
+// NEXT BUTTON
+	// if not the last page
 	if ($CURRENTPAGENUMBER != count($PAGES)-1){
 		$NXTPG=$PAGES[$CURRENTPAGENUMBER+1];
-		$NEXT=$HOMEURL.$NXTPG;
 		$HOMEPATHDIR=shell_exec("basename $HOMEPATH");
 // cut last character ("\n")
 		$HOMEPATHDIR=substr($HOMEPATHDIR,0,-1);
 // next buttom show to first article 
-			if ( $THISDIR == $HOMEPATHDIR ) {
+		if ($CURRENTPAGENUMBER === NULL ){
 				$NXTPG=$PAGES[0];
-				$NEXT=$HOMEURL.$NXTPG;
-			} 
+		} 
+		$NEXT=$HOMEURL.$NXTPG;
 		echo "<td><a href=$NEXT > next &gt; </a></td>"; 
 	}
 	echo "</tr></table>"; 
