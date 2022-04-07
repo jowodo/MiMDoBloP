@@ -1,7 +1,7 @@
-MDBP (Mark Down Blog for PHP) 
+MiMDoBloP (Minimal Mark Down Blog for PHP) 
 =============================
 
-MDBP **M**ark **D**own **B**log for **P**HP is simplistic dynamically generated markdown blog. 
+MiMDoBloP **Mi**nimal **M**ark **Do**wn **Blo**g for **P**HP is simplistic dynamically generated markdown blog. 
 
 Quick Start
 -----------
