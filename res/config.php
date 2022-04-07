@@ -1,7 +1,7 @@
 <?php
 $MD_EXECUTABLE="/usr/bin/markdown";
-$HOMEURL="https://wlankabel.at/blog2/";
-$HOMEPATH="/var/www/html/blog2";
-$PAGENAME="MDBlog2";
+$HOMEURL="https://blog.wlankabel.at/";
+$HOMEPATH="/var/www/html/blog";
+$PAGENAME="Mimdoblop";
 $EXCLUDES=['index.php', 'res', '.git', '.htaccess', '.', '..'];
 ?>
