@@ -5,7 +5,18 @@
 	--hdgclr:  #935A5A;
 	--linkclr: #0000ff;
 	--linkvis: #000088;
-	--linkhvr: #ff0000;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bgclr:   #1E1F21;
+		--txtclr:  #EEEFF1;
+		--artclr:  #1E1F21;
+		--prebg:   #000000;
+		--pretxt:  #FFFFFF;
+		--linkclr: #BAD7FF;
+		--linkvis: #F6BAFF;
+		--hdgclr:  #EEEFF1;
+	}
 }
 body{
 	color: var(--txtclr);
@@ -15,65 +26,33 @@ body{
 	font-size: 18px;
 }
 
-header{
-	text-align: justify;
-	margin: auto;
-}
 
-h1{
-	text-align: center;
-	font-family: Helvetica, Arial, Sans-Serif;
-	color: var(--hdgclr);
-}
-
-h2{
+h1,h2,h3,h4,h5,h6{
 	font-family: Helvetica, Arial, Sans-Serif;
 	color: var(--hdgclr);
 }
 
 table{
 	font-family: Helvetica, Arial, Sans-Serif;
-	margin-left: auto;
-	margin-right: auto;
-	border-collapse: separate;
-	table-layout: auto;
+	margin: auto;
 	border-spacing: 15px 1px;
-	padding-bottom: 15px;
-}
-th,td{
-	border: 2px solid var(--hdgclr);
-	border-radius: 10px;
-	padding: 5px;
-	color: var(--txtclr);
-	background-color: var(--artclr);
 }
 
 article{
-	color: var(--txtclr);
-	background-color: var(--artclr);
 	width: 75%;
 	text-align: justify;
 	margin: auto;
-	padding: 40px;
-	padding-top: 10px;
-	border-radius: 0.5em;
 }
 
-code{
-color: var(--txtclr);
-background-color: var(--bgclr);
-padding: 3px;
-border-radius: 3px;
+code,pre{
+color: var(--pretxt);
+background-color: var(--prebg);
 }
 
 pre{ 
-color: var(--artclr);
-background-color: var(--txtclr);
 overflow-x: auto; 
-padding: 5px;
-padding-top: 15px;
-padding-bottom: 15px;
-border-radius: 3px;
+padding: 10px;
+border: 1px solid #AAAAAA;
 } 
 
 img{ 
@@ -87,14 +66,7 @@ img{
 a:link    { color: var(--linkclr); } 
 a:active  { color: var(--linkclr); }
 a:visited { color: var(--linkvis); }
-a:hover   { color: var(--linkhvr); }
 
-a:link    { text-decoration: underline; }
-a:active  { text-decoration: underline; }
-a:visited { text-decoration: underline; }
-a:hover   { text-decoration: none; }
+a  { text-decoration: underline; }
+a:hover { text-decoration: none; }
 
-a:link    { font-weight:bold }
-a:active  { font-weight:bold }
-a:visited { font-weight:bold }
-a:hover   { font-weight:bold }
