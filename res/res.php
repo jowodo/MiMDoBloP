@@ -1,6 +1,9 @@
 <?php 
 include substr(strval(__FILE__),0,-7)."config.php";
 #echo __FILE__;
+#ini_set('display_errors', 1);
+#ini_set('display_startup_errors', 1);
+#error_reporting(E_ALL);
 
 function startit($title)
 {
@@ -20,8 +23,17 @@ function startit($title)
 	echo "<h1>$title</h1>"; 
 	echo "	</header>";
 	navigation();
-
 }
+
+function get_date()
+{
+	$DAY=substr( shell_exec("basename `readlink -f ..`"), 0,-1);
+	$MONTH=substr( shell_exec("basename `readlink -f ../..`"), 0,-1);
+	$YEAR=substr( shell_exec("basename `readlink -f ../../..`"), 0,-1);
+	$DATE="$YEAR/$MONTH/$DAY";
+	return $DATE;
+}
+
 function navigation()
 {
 	/*
@@ -30,14 +42,9 @@ function navigation()
 	GLOBAL $HOMEURL;
 	GLOBAL $HOMEPATH;
 	$PAGES=get_pages();
-	$THISDIR=shell_exec("basename `pwd` "); 
-// get parent directory (date)
-	$DATE=shell_exec("basename `readlink -f ..`");
-// cut last character ("\n")
-	$DATE=substr($DATE,0,-1);
-	$THISDIR="$DATE"."/"."$THISDIR";
-// cut last character ("\n")
-	$THISDIR=substr($THISDIR,0,-1);
+	$THISDIR=substr(shell_exec("basename `pwd` "), 0,-1);
+	$DATE=get_date();
+	$THISDIR="$DATE/$THISDIR";
 	$CURRENTPAGENUMBER=array_search($THISDIR,$PAGES);
 // PHP predifined array_search doesnt work ...? so reimplemented
 	$CURRENTPAGENUMBER=get_position($PAGES,$THISDIR);
@@ -82,45 +89,43 @@ function get_position($array, $value)
 	return NULL;
 }
 
+function exclude_from_array($orig_array, $excludes)
+{
+	foreach ($excludes as $exclude)
+	{
+		unset( $orig_array[array_search($exclude,$orig_array)] );
+	}
+	# MAKE CONTINUOUS INDEX 
+	$new_array=array_values($orig_array);
+	return $new_array;
+}
 
 function get_pages()
 {
 	GLOBAL $HOMEPATH;
 	GLOBAL $EXCLUDES;
-	$PAGES=scandir($HOMEPATH);
-//	$EXCLUDES=['index.php', 'res', '.git', '.htaccess', '.', '..'];
-//	$Npages=count($PAGES);
-	foreach ($EXCLUDES as $exclude)
-	{
-		unset( $PAGES[array_search($exclude,$PAGES)] );
-	}
-	# MAKE CONTINUOUS INDEX 
-	$PAGES=array_values($PAGES);
-//	print_r($PAGES); echo "<br>";
-//
-	$DATES=$PAGES;
+	$YEARS=exclude_from_array(scandir($HOMEPATH),$EXCLUDES);
 	$REALPAGES = new ArrayObject(array());
-	foreach ($DATES as $DATE)
+	foreach ($YEARS as $YEAR)
 	{
-		$PAGES_PER_DATE=scandir($HOMEPATH."/".$DATE);
-#		print_r($PAGES_PER_DATE); echo "<br>";
-		foreach ($PAGES_PER_DATE as $BLOGPOST)
+		$MONTHS_PER_YEAR=exclude_from_array(scandir("$HOMEPATH/$YEAR"), [".",".."]);
+		foreach ($MONTHS_PER_YEAR as $MONTH)
 		{
-			if ( $BLOGPOST != "." && $BLOGPOST != "..") 
+			$DAYS_PER_MONTH=exclude_from_array(scandir("$HOMEPATH/$YEAR/$MONTH"), [".",".."]);
+			foreach ($DAYS_PER_MONTH as $DAY)
 			{
-#				echo "$BLOGPOST"."<br>";
-#				echo $HOMEPATH."/".$DATE."/".$BLOGPOST;
-				if ( in_array("index.php", scandir($HOMEPATH."/".$DATE."/".$BLOGPOST) ) )
-				{		
-					$REALPAGES->append("$DATE"."/"."$BLOGPOST");
+				$PAGES_PER_DAY=exclude_from_array(scandir("$HOMEPATH/$YEAR/$MONTH/$DAY"), [".",".."]);
+				foreach ($PAGES_PER_DAY as $BLOGPOST)
+				{
+					if ( in_array("index.php", scandir("$HOMEPATH/$YEAR/$MONTH/$DAY/$BLOGPOST") ) )
+					{		
+						$REALPAGES->append("$YEAR/$MONTH/$DAY/$BLOGPOST");
+					}
 				}
 			}
 		}
 	}
-#	print_r($REALPAGES);
-	$PAGES=$REALPAGES;
-//
-	return $PAGES;
+	return $REALPAGES;
 }
 
 
@@ -138,7 +143,8 @@ function show_creation_date()
 {
 	$AUTHOR=shell_exec("ls -l ./index.md | awk '{print $3}'"); 
 	$DATE=shell_exec("basename `readlink -f ..`");
-	$LASTCHANGE=shell_exec("ls --full-time ./index.md | awk '{print $6}'");
+	$DATE=get_date();
+	$LASTCHANGE=shell_exec("ls --full-time ./index.md | awk '{print $6}' | tr - / ");
 	echo "created by $AUTHOR on $DATE - last changed on $LASTCHANGE";
 }
 
