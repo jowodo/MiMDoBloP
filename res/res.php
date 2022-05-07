@@ -9,7 +9,7 @@ function startit($title)
 	echo "<!DOCTYPE html>";
 	echo "<html>";
 	echo "<head>";
-	echo "	<base href=\"$HOMEURL\" >";
+	echo "	<base href=\"$HOMEURL/\" >";
 	echo "	<meta charset=\"UTF-8\">";
 	echo "	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" >";
 	echo "	<link href=\"./res/style.css\" rel=\"stylesheet\" type=\"text/css\">";
@@ -47,11 +47,11 @@ function navigation()
 // if  not first article show prev button
 	if ($CURRENTPAGENUMBER != 0 ) {
 		$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
-		$PREV=$HOMEURL.$PRVPG;
+		$PREV=$HOMEURL."/".$PRVPG;
 		echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
 	}
 // HOME BUTTON
-	echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
+	echo "<td><a href=\"$HOMEURL/\"> home </a></td>"; 
 // NEXT BUTTON
 	// if not the last page
 	if ($CURRENTPAGENUMBER != count($PAGES)-1){
@@ -63,7 +63,7 @@ function navigation()
 		if ($CURRENTPAGENUMBER === NULL ){
 				$NXTPG=$PAGES[0];
 		} 
-		$NEXT=$HOMEURL.$NXTPG;
+		$NEXT=$HOMEURL."/".$NXTPG;
 		echo "<td><a href=$NEXT > next &gt; </a></td>"; 
 	}
 	echo "</tr></table>"; 
