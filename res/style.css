@@ -5,14 +5,15 @@
 	--hdgclr:  #935A5A;
 	--linkclr: #0000ff;
 	--linkvis: #000088;
+	--prebg:   #000000;
+	--pretxt:  #FFFFFF;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bgclr:   #1E1F21;
 		--txtclr:  #EEEFF1;
 		--artclr:  #1E1F21;
-		--prebg:   #000000;
-		--pretxt:  #FFFFFF;
+  		--bgclr:  #282a36;
 		--linkclr: #BAD7FF;
 		--linkvis: #F6BAFF;
 		--hdgclr:  #EEEFF1;
@@ -42,6 +43,9 @@ article{
 	width: 75%;
 	text-align: justify;
 	margin: auto;
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	padding: 15px;
+		background-color: var(--artclr);
 }
 
 code,pre{
