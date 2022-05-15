@@ -34,6 +34,14 @@ function get_date()
 	return $DATE;
 }
 
+function get_name()
+{
+	$DIRNAME=shell_exec("basename \"`pwd`\" ");
+#	cut trailing ?space? 
+	$NAME=substr($DIRNAME, 0,-1);
+	return $NAME;
+}
+
 function navigation()
 {
 	/*
@@ -42,7 +50,7 @@ function navigation()
 	GLOBAL $HOMEURL;
 	GLOBAL $HOMEPATH;
 	$PAGES=get_pages();
-	$THISDIR=substr(shell_exec("basename `pwd` "), 0,-1);
+	$THISDIR=get_name();
 	$DATE=get_date();
 	$THISDIR="$DATE/$THISDIR";
 	$CURRENTPAGENUMBER=array_search($THISDIR,$PAGES);
