@@ -74,12 +74,12 @@ function navigation()
 		$HOMEPATHDIR=shell_exec("basename $HOMEPATH");
 // cut last character ("\n")
 		$HOMEPATHDIR=substr($HOMEPATHDIR,0,-1);
-// next buttom show to first article 
+// next button show to first article 
 		if ($CURRENTPAGENUMBER === NULL ){
 				$NXTPG=$PAGES[0];
 		} 
 		$NEXT=$HOMEURL."/".$NXTPG;
-		echo "<td><a href=$NEXT > next &gt; </a></td>"; 
+		echo "<td><a href=\"$NEXT\"> next &gt; </a></td>"; 
 	}
 	echo "</tr></table>"; 
 	echo "</navigation>";
