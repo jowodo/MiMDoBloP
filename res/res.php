@@ -49,6 +49,7 @@ function navigation()
 	 */
 	GLOBAL $HOMEURL;
 	GLOBAL $HOMEPATH;
+	GLOBAL $REVERSE_CHRON;
 	$PAGES=get_pages();
 	$THISDIR=get_name();
 	$DATE=get_date();
@@ -59,27 +60,31 @@ function navigation()
 	echo "<navigation>";
 	echo "<table><tr>";
 // PREV BUTTON
-// if  not first article show prev button
-	if ($CURRENTPAGENUMBER != 0 ) {
-		$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
-		$PREV=$HOMEURL."/".$PRVPG;
-		echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
-	}
-// HOME BUTTON
-	echo "<td><a href=\"$HOMEURL/\"> home </a></td>"; 
-// NEXT BUTTON
-	// if not the last page
-	if ($CURRENTPAGENUMBER != count($PAGES)-1){
-		$NXTPG=$PAGES[$CURRENTPAGENUMBER+1];
-		$HOMEPATHDIR=shell_exec("basename $HOMEPATH");
-// cut last character ("\n")
-		$HOMEPATHDIR=substr($HOMEPATHDIR,0,-1);
-// next button show to first article 
-		if ($CURRENTPAGENUMBER === NULL ){
-				$NXTPG=$PAGES[0];
-		} 
-		$NEXT=$HOMEURL."/".$NXTPG;
-		echo "<td><a href=\"$NEXT\"> next &gt; </a></td>"; 
+	if (false){ 
+		echo " ";
+	} else {
+		### if  not first article show prev button
+		if ($CURRENTPAGENUMBER != 0 ) {
+			$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
+			$PREV=$HOMEURL."/".$PRVPG;
+			echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
+		}
+		### HOME BUTTON
+		echo "<td><a href=\"$HOMEURL/\"> home </a></td>"; 
+		### NEXT BUTTON
+		### if not the last page
+		if ($CURRENTPAGENUMBER != count($PAGES)-1){
+			$NXTPG=$PAGES[$CURRENTPAGENUMBER+1];
+			$HOMEPATHDIR=shell_exec("basename $HOMEPATH");
+			### cut last character ("\n")
+			$HOMEPATHDIR=substr($HOMEPATHDIR,0,-1);
+			### next button show to first article 
+			if ($CURRENTPAGENUMBER === NULL ){
+					$NXTPG=$PAGES[0];
+			} 
+			$NEXT=$HOMEURL."/".$NXTPG;
+			echo "<td><a href=\"$NEXT\"> next &gt; </a></td>"; 
+		}
 	}
 	echo "</tr></table>"; 
 	echo "</navigation>";
@@ -112,8 +117,10 @@ function get_pages()
 {
 	GLOBAL $HOMEPATH;
 	GLOBAL $EXCLUDES;
+	GLOBAL $REVERSE_CHRON;
 	$YEARS=exclude_from_array(scandir($HOMEPATH),$EXCLUDES);
 	$REALPAGES = new ArrayObject(array());
+	#$REALPAGES = array();
 	foreach ($YEARS as $YEAR)
 	{
 		$MONTHS_PER_YEAR=exclude_from_array(scandir("$HOMEPATH/$YEAR"), [".",".."]);
@@ -133,14 +140,24 @@ function get_pages()
 			}
 		}
 	}
-	return $REALPAGES;
+	### REVERSE ARRAY
+	if ($REVERSE_CHRON)
+		$REALPAGES->uksort('compare');
+		$REALPAGES=array_values( (array) $REALPAGES);
+#	print_r($REALPAGES);
+	return (array) $REALPAGES;
+}
+
+function compare($a,$b)
+{
+	return $b-$a;
 }
 
 
 function make_article()
 {
 	GLOBAL $MD_EXECUTABLE;
-	show_creation_date();
+	echo show_creation_date();
 	echo "<article>";
 	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | "."$MD_EXECUTABLE"." ") ; 
 	echo $body;
@@ -153,7 +170,7 @@ function show_creation_date()
 	$DATE=shell_exec("basename `readlink -f ..`");
 	$DATE=get_date();
 	$LASTCHANGE=shell_exec("ls --full-time ./index.md | awk '{print $6}' | tr - / ");
-	echo "created by $AUTHOR on $DATE - last changed on $LASTCHANGE";
+	return  "created by $AUTHOR on $DATE - last changed on $LASTCHANGE";
 }
 
 function endit()
