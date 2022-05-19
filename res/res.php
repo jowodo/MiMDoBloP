@@ -66,11 +66,11 @@ function navigation()
 		### if  not first article show prev button
 		if ($CURRENTPAGENUMBER != 0 ) {
 			$PRVPG=$PAGES[$CURRENTPAGENUMBER-1];
-			$PREV=$HOMEURL."/".$PRVPG;
+			$PREV="$HOMEURL/$PRVPG";
 			echo "<td><a href=\"$PREV\"> &lt; prev </a></td>"; 
 		}
 		### HOME BUTTON
-		echo "<td><a href=\"$HOMEURL/\"> home </a></td>"; 
+		echo "<td><a href=\"$HOMEURL\"> home </a></td>"; 
 		### NEXT BUTTON
 		### if not the last page
 		if ($CURRENTPAGENUMBER != count($PAGES)-1){
@@ -82,7 +82,7 @@ function navigation()
 			if ($CURRENTPAGENUMBER === NULL ){
 					$NXTPG=$PAGES[0];
 			} 
-			$NEXT=$HOMEURL."/".$NXTPG;
+			$NEXT="$HOMEURL/$NXTPG";
 			echo "<td><a href=\"$NEXT\"> next &gt; </a></td>"; 
 		}
 	}
