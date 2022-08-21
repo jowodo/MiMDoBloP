@@ -153,10 +153,17 @@ function compare($a,$b)
 	return $b-$a;
 }
 
+function get_read_time()
+{
+	GLOBAL $WORDSPERMINUTE;
+	$READTIME=shell_exec("echo \"$(( $(wc -w ./index.md | awk '{print $1}')/$WORDSPERMINUTE))\"");
+	return "approximate reading time: $READTIME minutes<br>";
+}
 
 function make_article()
 {
 	GLOBAL $MD_EXECUTABLE;
+	echo get_read_time();
 	echo show_creation_date();
 	echo "<article>";
 	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | "."$MD_EXECUTABLE"." ") ; 
