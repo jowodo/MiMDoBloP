@@ -168,6 +168,7 @@ function make_article()
 	GLOBAL $MD_EXECUTABLE;
 	GLOBAL $ESTIMATE_READING_TIME;
 	GLOBAL $HOMEPATH;
+	GLOBAL $HOMEURL;
 	if  ($ESTIMATE_READING_TIME)
 	{
 		echo get_read_time();
@@ -178,7 +179,7 @@ function make_article()
 	# bend links 
 	$LINKPREFIX=substr( shell_exec("pwd"),strlen($HOMEPATH),-1);
 	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | ". $MD_EXECUTABLE ." | 
-		sed -e 's@href=\"\\.@href=\"" . $LINKPREFIX ."@g' -e 's@src=\"\\.@src=\"". $LINKPREFIX ."@g' ") ; 
+		sed -e 's@href=\"\\.@href=\"" . "$HOMEURL"."/"."$LINKPREFIX" ."@g' -e 's@src=\"\\.@src=\"". "$HOMEURL"."/"."$LINKPREFIX" ."@g' ") ; 
 	echo $body;
 	echo "</article>";
 }
