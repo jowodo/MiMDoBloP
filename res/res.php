@@ -142,8 +142,10 @@ function get_pages()
 	}
 	### REVERSE ARRAY
 	if ($REVERSE_CHRON)
+	{
 		$REALPAGES->uksort('compare');
 		$REALPAGES=array_values( (array) $REALPAGES);
+	}
 #	print_r($REALPAGES);
 	return (array) $REALPAGES;
 }
@@ -163,7 +165,11 @@ function get_read_time()
 function make_article()
 {
 	GLOBAL $MD_EXECUTABLE;
-	echo get_read_time();
+	GLOBAL $ESTIMATE_READING_TIME;
+	if  ($ESTIMATE_READING_TIME)
+	{
+		echo get_read_time();
+	}
 	echo show_creation_date();
 	echo "<article>";
 	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | "."$MD_EXECUTABLE"." ") ; 
