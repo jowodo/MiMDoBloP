@@ -5,7 +5,12 @@ if [ $# -eq 0 ] ; then
 	exit
 fi
 
-NAME=$@
+sluggify()
+{
+	# from https://blog.codeselfstudy.com/blog/how-to-slugify-strings-in-bash/
+	echo "$@" | sed -e "s/ /-/g" -e "s/[^[:alnum:]-]//g" | tr -s "-" | tr A-Z a-z
+}
+NAME=$(sluggify $@)
 VERBOSE=0
 DATESTRING="%Y/%m/%d"
 
