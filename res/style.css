@@ -23,54 +23,37 @@ body{
 	color: var(--txtclr);
 	background-color: var(--bgclr);
 	text-align: center;
-	line-height: 1.4;
-	font-size: 18px;
+	font:1.2em/1.62 sans-serif;
 }
-
-
-h1,h2,h3,h4,h5,h6{
-	font-family: Helvetica, Arial, Sans-Serif;
-	color: var(--hdgclr);
-}
-
 table{
-	font-family: Helvetica, Arial, Sans-Serif;
 	margin: auto;
 	border-spacing: 15px 1px;
 }
-
 article{
-	width: 75%;
+	max-width:50em;
 	text-align: justify;
 	margin: auto;
-	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-	padding: 15px;
-		background-color: var(--artclr);
+//	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	padding: 2em;
+	background-color: var(--artclr);
 }
-
 code,pre{
 color: var(--pretxt);
 background-color: var(--prebg);
 }
-
 pre{ 
 overflow-x: auto; 
 padding: 10px;
 border: 1px solid #AAAAAA;
 } 
-
 img{ 
 	display: block; 
 	max-width: 85%; 
 	margin: auto;
 	border-radius: 5px;
-//	filter: grayscale(100%);
 }
-
 a:link    { color: var(--linkclr); } 
 a:active  { color: var(--linkclr); }
 a:visited { color: var(--linkvis); }
-
 a  { text-decoration: underline; }
 a:hover { text-decoration: none; }
-
