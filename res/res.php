@@ -3,7 +3,7 @@ include substr(strval(__FILE__),0,-7)."config.php";
 #echo __FILE__;
 #ini_set('display_errors', 1);
 #ini_set('display_startup_errors', 1);
-#error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 function startit($title)
 {
@@ -27,6 +27,7 @@ function startit($title)
 
 function get_date()
 {
+	# FROM DIRECTORY STRUCTURE
 	$DAY=substr( shell_exec("basename `readlink -f ..`"), 0,-1);
 	$MONTH=substr( shell_exec("basename `readlink -f ../..`"), 0,-1);
 	$YEAR=substr( shell_exec("basename `readlink -f ../../..`"), 0,-1);
@@ -166,13 +167,18 @@ function make_article()
 {
 	GLOBAL $MD_EXECUTABLE;
 	GLOBAL $ESTIMATE_READING_TIME;
+	GLOBAL $HOMEPATH;
 	if  ($ESTIMATE_READING_TIME)
 	{
 		echo get_read_time();
 	}
 	echo show_creation_date();
 	echo "<article>";
-	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | "."$MD_EXECUTABLE"." ") ; 
+#	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | "."$MD_EXECUTABLE"." ") ; 
+	# bend links 
+	$LINKPREFIX=substr( shell_exec("pwd"),strlen($HOMEPATH),-1);
+	$body = shell_exec("/usr/bin/tail -n+3 ./index.md | ". $MD_EXECUTABLE ." | 
+		sed -e 's@href=\"\\.@href=\"" . $LINKPREFIX ."@g' -e 's@src=\"\\.@src=\"". $LINKPREFIX ."@g' ") ; 
 	echo $body;
 	echo "</article>";
 }
