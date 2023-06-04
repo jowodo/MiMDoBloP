@@ -13,6 +13,14 @@ vim res/config.php
 ./res/mkpost.sh my-first-post
 </pre>
 
+Dependencies 
+------------
+- a running PHP server e.g. apache with php extension 
+- a markdown to html converter e.g. [`markdown`](https://daringfireball.net/projects/markdown/) or [`pandoc`](https://github.com/jgm/pandoc)
+- `bash`, `sed` and `grep`
+- gnu coreutils (`basename`, `echo`, `ln`, `ls`,`mkdir`, `pwd`, `readlink`, `tail`, `tr`, `wc`) 
+- `vim` or any other command line text editor
+
 Resources
 ---------
 In the resource directory `res` following files can be found:
