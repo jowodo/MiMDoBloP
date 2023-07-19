@@ -6,7 +6,7 @@ startit($title);
 #
 echo "<article>";
 echo "<h1>About this blog</h1>"; 
-echo "In this blog technical issues about Linux, Unix, bash and so on will be treated."; 
+echo "In this blog I write about everything Afro or Tech which touches me at the moment.";
 echo "<h2>List of articles</h2>";
 echo "<ul>";
 $PAGES=get_pages();
