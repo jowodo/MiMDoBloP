@@ -195,6 +195,7 @@ function show_creation_date()
 
 function endit()
 {
+	echo "BTC: 1WLANzCKEuo8Zvssi84cyqTFePvQ8f8tW"; 
 	echo "</body>";
 	echo "</html>";
 }
