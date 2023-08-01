@@ -9,7 +9,7 @@ print_usage(){
 test $# -ne 1 && echo "too many arguments" && print_usage
 
 # FIND ARTICLE 
-found_articles=$(find . -path ./archive -prune -o -type d -name "*$1*" -print )
+found_articles=$(find . -path ./archive -prune -o -type d -name "*$1*" -print | sort )
 #count=$(find . -type d -name "*africa*" | wc -l)
 ## IF MORE THAN ONE FOUND, LET USER CHOOSE
 #if [ $count -gt 1 ] ; then 
