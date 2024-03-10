@@ -121,18 +121,22 @@ function get_pages()
 	GLOBAL $REVERSE_CHRON;
 	$YEARS=exclude_from_array(scandir($HOMEPATH),$EXCLUDES);
 	$REALPAGES = new ArrayObject(array());
-	#$REALPAGES = array();
 	foreach ($YEARS as $YEAR)
 	{
+		if (glob($YEAR, GLOB_ONLYDIR) == false) continue;
 		$MONTHS_PER_YEAR=exclude_from_array(scandir("$HOMEPATH/$YEAR"), [".",".."]);
 		foreach ($MONTHS_PER_YEAR as $MONTH)
 		{
+			if (glob("$YEAR/$MONTH", GLOB_ONLYDIR) == false) continue;
 			$DAYS_PER_MONTH=exclude_from_array(scandir("$HOMEPATH/$YEAR/$MONTH"), [".",".."]);
 			foreach ($DAYS_PER_MONTH as $DAY)
 			{
+				if (glob("$YEAR/$MONTH/$DAY", GLOB_ONLYDIR) == false) continue;
 				$PAGES_PER_DAY=exclude_from_array(scandir("$HOMEPATH/$YEAR/$MONTH/$DAY"), [".",".."]);
 				foreach ($PAGES_PER_DAY as $BLOGPOST)
 				{
+					if (glob("$YEAR/$MONTH/$DAY/$BLOGPOST", GLOB_ONLYDIR) == false) continue;
+#					echo "$HOMEPATH/$YEAR/$MONTH/$DAY/$BLOGPOST<br>";
 					if ( in_array("index.php", scandir("$HOMEPATH/$YEAR/$MONTH/$DAY/$BLOGPOST") ) )
 					{		
 						$REALPAGES->append("$YEAR/$MONTH/$DAY/$BLOGPOST");
