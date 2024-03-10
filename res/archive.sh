@@ -1,7 +1,9 @@
 #!/bin/bash 
 
+
 # TEST IF ARGUMENT COUNT IS CORRECT
 print_usage(){
+	echo "This script allows you to easily archive posts"
 	echo "USAGE:"
 	echo "  $0 <article name>"
 	exit 0
@@ -10,7 +12,6 @@ test $# -ne 1 && echo "too many arguments" && print_usage
 
 # FIND ARTICLE 
 found_articles=$(find . -path ./archive -prune -o -type d -name "*$1*" -print | sort )
-#count=$(find . -type d -name "*africa*" | wc -l)
 ## IF MORE THAN ONE FOUND, LET USER CHOOSE
 #if [ $count -gt 1 ] ; then 
 	i=1
@@ -23,7 +24,7 @@ found_articles=$(find . -path ./archive -prune -o -type d -name "*$1*" -print | 
 	read choice 
 	test $choice -eq 0 && echo "exiting ..." && exit 
 	articles_array=($found_articles)
-	article=${articles_array[$choice]}
+	article=${articles_array[$(($choice+1))]}
 #else 
 #	article=$found_articles
 #fi
@@ -33,8 +34,11 @@ dirpath=$(dirname $article)
 # CREATE PATH IN ARCHIVE DIR
 mkdir -vp archive/$dirpath
 # MOVE ARTICLE FOLDER TO ARCHIVE
-mv $article $dirpath
-
+mv -v $article archive/$dirpath
+# BEND index.php SOFTLINK
+pushd archive/$dirpath
+ln -sf ../../../../../res/index.php index.php
+popd
 
 
 
